@@ -4,3 +4,190 @@
 *:after {
   box-sizing: border-box;
 }
+
+/* ===== Base Styles ===== */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f4f8;
+  color: #333;
+}
+
+#wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* ===== Header ===== */
+#top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #002244;
+  color: white;
+  padding: 1rem;
+}
+
+#top-header .sitName a {
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+
+#top-header #tools a {
+ color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ===== Navigation ===== */
+nav {
+  background-color: #004488;
+  margin-bottom: 1rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  flex: 1 1 20%;
+  text-align: center;
+  padding: 0.75rem;
+  color: white;
+  border-right: 1px solid #003366;
+  font-weight: bold;
+}
+
+nav li:last-child {
+  border-right: none;
+}
+
+/* ===== Hero Section ===== */
+.hero {
+  position: relative;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.hero img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+
+.hero-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.cta-button {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.75rem 1.5rem;
+  background-color: #00bfff;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.cta-button:hover {
+  background-color: #0080b3;
+}
+
+/* ===== Upgrades Section ===== */
+.upgrades {
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.upgrades h2 {
+  text-align: center;
+  color: #002244;
+  margin-bottom: 1rem;
+}
+
+.upgrade-items {
+  display: grid;
+  gap: 1rem;
+}
+
+.upgrade {
+  text-align: center;
+}
+
+.upgrade img {
+  width: 100%;
+  max-width: 150px;
+  border-radius: 10px;
+  margin-bottom: 0.5rem;
+}
+
+/* ===== Reviews Section ===== */
+.reviews {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.reviews h2 {
+  text-align: center;
+  color: #002244;
+  margin-bottom: 1rem;
+}
+
+.review {
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+  background-color: #f9f9f9;
+  border-left: 4px solid #00bfff;
+}
+
+.review cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-style: normal;
+  color: #555;
+}
+
+/* ===== Footer ===== */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background-color: #002244;
+  color: white;
+  margin-top: 2rem;
+}
+
+footer p,
+footer .copyright {
+  margin: 0;
+}
+
+/* ===== Media Queries for Larger Screens ===== */
+@media screen and (min-width: 768px) {
+  .upgrade-items {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  nav li {
+    flex: none;
+    padding: 1rem 2rem;
+  }
+}
