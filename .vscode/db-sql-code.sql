@@ -39,6 +39,7 @@ ALTER TABLE IF EXISTS public.inventory
 	ON UPDATE CASCADE 
 	ON DELETE NO ACTION;
 
+
 -- Table structure for table `account`
 CREATE TABLE IF NOT EXISTS public.account
 (
