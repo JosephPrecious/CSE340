@@ -42,37 +42,50 @@ body {
   font-weight: bold;
 }
 
-/* ===== Navigation ===== */
-nav {
-  background-color: #004488;
-  margin-bottom: 1rem;
-}
-
+/* Nav container */
 nav ul {
   list-style: none;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin: 0;
   padding: 0;
+  margin: 0;
+  display: flex;
+  background-color: #222; /* dark nav background */
+  justify-content: center; /* center nav items */
+  flex-wrap: wrap;
 }
 
-nav li {
-  flex: 1 1 20%;
-  text-align: center;
-  padding: 0.75rem;
-  color: white;
-  border-right: 1px solid #003366;
-  font-weight: bold;
+/* Nav list items */
+nav ul li {
+  margin: 0 1rem;
 }
 
-nav li:last-child {
-  border-right: none;
+/* Nav links */
+nav ul li a {
+  color: #eee;
+  text-decoration: none;
+  font-weight: 600;
+  padding: 1rem 0.5rem;
+  display: block;
+  transition: color 0.3s ease;
 }
 
-nav li:hover {
-  background-color: #0080b3;
+/* Hover/focus states */
+nav ul li a:hover,
+nav ul li a:focus {
+  color: #ffd700; /* gold/yellow highlight */
+  outline: none;
 }
+
+/* Responsive: stack nav items on small screens */
+@media (max-width: 600px) {
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+  }
+  nav ul li {
+    margin: 0.5rem 0;
+  }
+}
+
 
 /* ===== Hero Section ===== */
 .hero {
@@ -87,7 +100,7 @@ nav li:hover {
 .hero img {
   width: 100%;
   height: auto;
-  border-radius: px;
+  border-radius: 8px;
 }
 
 .hero-text {
@@ -206,5 +219,119 @@ footer .copyright {
 
   .hero-text {
     max-width: 45%;
+  }
+}
+
+/* ===== Inventory Grid ===== */
+#inv-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+  list-style: none;
+  margin: 0;
+}
+
+#inv-display li {
+  background-color: #ffffff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#inv-display li:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+#inv-display img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.namePrice {
+  padding: 1rem;
+  text-align: center;
+}
+
+.namePrice h2 {
+  font-size: 1.1rem;
+  margin: 0 0 0.5rem;
+  color: #002244;
+}
+
+.namePrice a {
+  text-decoration: none;
+  color: #002244;
+}
+
+.namePrice span {
+  display: block;
+  font-size: 1.1rem;
+  color: #000000;
+  font-weight: bold;
+}
+
+/* Notice message when no vehicles found */
+.notice {
+  text-align: center;
+  color: #cc0000;
+  font-size: 1.2rem;
+  padding: 2rem;
+}
+
+.vehicle-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+  max-width: 900px;
+  margin: 2rem auto; /* center container */
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.vehicle-detail img {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+  object-fit: contain;
+  box-shadow: 0 0 8px rgba(0,0,0,0.15);
+}
+
+.vehicle-info {
+  flex: 1;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #222;
+}
+
+.vehicle-info h2 {
+  margin-top: 0;
+  font-size: 2rem;
+  color: #005f73; /* a nice accent color */
+}
+
+.vehicle-info p {
+  font-size: 1.1rem;
+  line-height: 1.5;
+  margin: 0.5rem 0;
+}
+
+.vehicle-info strong {
+  color: #000000;
+}
+
+/* Side by side on wider screens */
+@media (min-width: 768px) {
+  .vehicle-detail {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  .vehicle-detail img {
+    margin-right: 2rem;
   }
 }
