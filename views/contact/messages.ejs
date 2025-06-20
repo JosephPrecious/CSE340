@@ -1,0 +1,8 @@
+<h1>All Messages</h1>
+<ul>
+  <% messages.forEach(msg => { %>
+    <li><strong><%= msg.subject %></strong> from <%= msg.sender_name %> on <%= msg.submitted_on.toDateString() %>
+      <p><%= msg.message %></p>
+    </li>
+  <% }) %>
+</ul>

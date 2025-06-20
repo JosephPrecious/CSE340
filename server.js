@@ -13,12 +13,12 @@ const static = require("./routes/static")
 const utilities = require("./utilities/")
 const baseController = require("./controllers/baseController")
 const inventoryRoute = require("./routes/inventoryRoute")
-const errorRoute = require("./routes/errorRoute");
 const session = require("express-session")
 const pool = require('./database/')
 const accountRoute = require("./routes/accountRoute")
 const bodyParser = require("body-parser")
-
+const cookieParser = require("cookie-parser")
+const messageRoute = require("./routes/messageRoute")
 
 
 /* ***********************
@@ -45,6 +45,17 @@ app.use(session({
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
+app.use(cookieParser())
+
+app.use(utilities.checkJWTToken)
+
+app.use((req, res, next) => {
+  res.locals.loggedin = req.session.loggedin || false
+  res.locals.accountData = req.session.account || null
+  next()
+})
+
+
 // Express Messages Middleware
 app.use(require('connect-flash')())
 app.use(function(req, res, next){
@@ -65,8 +76,8 @@ app.get("/", utilities.handleErrors(baseController.buildHome))
 
 // Inventory routes
 app.use("/inv", inventoryRoute)
-app.use("/", errorRoute);
 app.use("/account", accountRoute)
+app.use("/contact", messageRoute)
 
 // File Not Found Route - must be last route in list
 app.use(async (req, res, next) => {

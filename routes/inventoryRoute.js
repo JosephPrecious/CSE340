@@ -5,39 +5,53 @@ const invController = require("../controllers/invController")
 const utilities = require("../utilities/")
 const invValidate = require("../utilities/inventory-validation")
 
-// Route to build inventory by classification view
-router.get("/type/:classificationId", invController.buildByClassificationId);
+// Classification View - Public
+router.get("/type/:classificationId", invController.buildByClassificationId)
 
-router.get("/detail/:inv_id", invController.buildByVehicleId);
+// Vehicle Detail View - Public
+router.get("/detail/:inv_id", invController.buildByVehicleId)
 
-router.get("/error/test", invController.testError);
+// Error Test - Public (development only)
+router.get("/error/test", invController.testError)
 
+// Management View - PROTECTED
 router.get(
-     "/", 
-     utilities.handleErrors(invController.buildManagement)
-   );
+  "/", 
+  utilities.checkLogin,
+  utilities.checkAccountType,
+  utilities.handleErrors(invController.buildManagementView)
+)
 
-// Management View
-router.get("/", utilities.handleErrors(invController.buildManagementView)) 
-
-// Add Classification
-router.get("/add-classification", utilities.handleErrors(invController.buildAddClassification))
+// Add Classification - PROTECTED
+router.get(
+  "/add-classification",
+  utilities.checkLogin,
+  utilities.checkAccountType,
+  utilities.handleErrors(invController.buildAddClassification)
+)
 router.post(
   "/add-classification",
+  utilities.checkLogin,
+  utilities.checkAccountType,
   invValidate.classificationRules(),
   invValidate.checkClassificationData,
   utilities.handleErrors(invController.addClassification)
 )
 
-// Add Inventory
-router.get("/add-inventory", utilities.handleErrors(invController.buildAddInventory))
-
+// Add Inventory - PROTECTED
+router.get(
+  "/add-inventory",
+  utilities.checkLogin,
+  utilities.checkAccountType,
+  utilities.handleErrors(invController.buildAddInventory)
+)
 router.post(
   "/add-inventory",
+  utilities.checkLogin,
+  utilities.checkAccountType,
   invValidate.inventoryRules(),
   invValidate.checkInventoryData,
   utilities.handleErrors(invController.addInventory)
 )
 
-
-module.exports = router;
+module.exports = router

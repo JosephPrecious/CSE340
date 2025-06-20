@@ -3,9 +3,9 @@ const { body, validationResult } = require("express-validator")
 const classificationRules = () => {
   return [
     body("classification_name")
-      .trim()
-      .isLength({ min: 1 }).withMessage("Classification name is required.")
-      .matches(/^[A-Za-z0-9]+$/).withMessage("No spaces or special characters allowed.")
+    .trim()
+    .isAlphanumeric().withMessage("Only letters/numbers allowed.")
+    .notEmpty().withMessage("Classification name is required.")
   ]
 }
 

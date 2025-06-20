@@ -9,7 +9,7 @@
     <div class="error-list">
       <ul>
         <% errors.forEach(function(error) { %>
-          <li><%= error %></li>
+          <li><%= error.msg %></li>
         <% }) %>
       </ul>
     </div>
@@ -17,13 +17,8 @@
 
   <form action="/account/register" method="post">
     <label for="account_firstname">First Name</label>
-    <input
-      type="text"
-      id="account_firstname"
-      name="account_firstname"
-      required
-      value="<%= typeof account_firstname != 'undefined' ? account_firstname : '' %>"
-    >
+    <input type="email" id="account_email" name="account_email" required value="<%= typeof account_email != 'undefined' ? account_email : '' %>">
+
 
     <label for="account_lastname">Last Name</label>
     <input
